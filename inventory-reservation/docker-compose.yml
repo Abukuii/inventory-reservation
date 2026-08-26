@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: reservation
+      POSTGRES_PASSWORD: reservation
+      POSTGRES_DB: reservation
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U reservation"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
